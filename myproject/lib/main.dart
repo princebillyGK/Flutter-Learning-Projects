@@ -17,11 +17,26 @@ class MyApp extends StatefulWidget {
 class _MyappState extends State<MyApp>{
   //attributes
   var _questionIndex= 0;
-  var _questions = [
-    'What is your favourite color',
-    'What is your favourite game',
-    'What is your favourite algorithm',
-    'What is your favourite programming lanuage'
+  // var _questions = [
+  //   'What is your favourite color',
+  //   'What is your favourite game',
+  //   'What is your favourite algorithm',
+  //   'What is your favourite programming lanuage'
+  // ];
+  var questions = [
+    {
+      'questionText' : 'What is your favourite color',
+      'answers' : ['Blue', 'Red', 'Green']
+    },
+    {
+      'questionText' : 'What is your favourite animal',
+      'answers' : ['Lion', 'Bear', 'Monkey']
+    },
+    {
+      'questionText' : 'What is your favourite game',
+      'answers' : ['Football', 'Programming', 'Race']
+    },
+
   ];
   //user-defined-function
   void _answerQuestion(){
@@ -33,30 +48,13 @@ class _MyappState extends State<MyApp>{
   }
   //build function
   Widget build(BuildContext context) {
-    var question = [
-      {
-        'questionText' : 'What is your favourite color',
-        'answers' : ['Blue', 'Red', 'Green']
-      },
-      {
-        'questionText' : 'What is your favourite animal',
-        'answers' : ['Lion', 'Bear', 'Monkey']
-      },
-      {
-        'questionText' : 'What is your favourite game',
-        'answers' : ['Football', 'Programming', 'Race']
-      },
-
-    ]
     return MaterialApp(
       home: Scaffold(
           appBar: AppBar(title: Text("My first app")),
           body: Column(
             children: <Widget>[
-              Question(_questions.elementAt(_questionIndex)),
-              Answer(_answerQuestion),
-              Answer(_answerQuestion),
-              Answer(_answerQuestion),
+              Question(questions[_questionIndex]['questionText']),
+              ...(questions[_questionIndex]['answers'] as List<String>).map((answer) => Answer(_answerQuestion,answer)).toList(),
             ],
             )
           )
