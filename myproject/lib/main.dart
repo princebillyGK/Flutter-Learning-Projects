@@ -33,6 +33,21 @@ class _MyappState extends State<MyApp>{
   }
   //build function
   Widget build(BuildContext context) {
+    var question = [
+      {
+        'questionText' : 'What is your favourite color',
+        'answers' : ['Blue', 'Red', 'Green']
+      },
+      {
+        'questionText' : 'What is your favourite animal',
+        'answers' : ['Lion', 'Bear', 'Monkey']
+      },
+      {
+        'questionText' : 'What is your favourite game',
+        'answers' : ['Football', 'Programming', 'Race']
+      },
+
+    ]
     return MaterialApp(
       home: Scaffold(
           appBar: AppBar(title: Text("My first app")),
